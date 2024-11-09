@@ -12,5 +12,18 @@
 </head>
 <body>
 
+<%
+    String userId = request.getParameter("commentId");
+    if (userId != null) {
+%>
+<p>삭제한 ID: <%= userId %></p>
+<%
+} else {
+%>
+<p>ID전달 실패</p>
+<%
+    }
+%>
+<a href="${pageContext.request.contextPath}/index.jsp" >목록으로 돌아가기</a>
 </body>
 </html>
