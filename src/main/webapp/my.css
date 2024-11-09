@@ -1,0 +1,65 @@
+#tableContent{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+#homeMenu{
+    background-color: rgb(239, 239, 239);
+}
+#viewPage{
+    margin-left:12%;
+}
+#addMenu{
+    background-color: rgb(239, 239, 239);
+}
+.fa-solid{
+    margin: 10px;
+    margin-left: 20px;
+}
+a{
+    color:black;
+    text-decoration: none;
+}
+.nav-link{
+    color: gray;
+}
+.nav-link:hover{
+    color: black;
+}
+.nav-link:focus{
+    color:gray;
+    background-color: rgba(234, 234, 234, 0.999);
+}
+
+.nav{margin-right:30px;}
+
+.fs-4{
+  margin-right:20px;
+}
+.btn{
+    background-color: black !important;
+    border:1px solid white !important;
+}
+
+.vali{
+    color:red;
+    font-size:0.8rem;
+    margin-bottom: 30px;
+    visibility: hidden;
+}
+#editPage{
+  margin-left: 15%;
+
+}
+#finalButton{
+  width:80px;
+  border-radius: 5px;
+  border: 1px solid lightslategray;
+  background-color: lightgray;
+}
+textarea{
+  width:300px;
+  height: 30px;
+}
+input{width: 300px;}
+select{width: 300px;}

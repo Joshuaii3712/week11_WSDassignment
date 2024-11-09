@@ -1,0 +1,129 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="my.css">
+
+    <script>
+        function saveConfirm() {
+            if (confirm("Do you want to save this file in your PC?")) {
+                alert("This function is not developed yet...");
+            }
+        }
+
+        function unvalid(obj) {
+            obj.style.visibility = "visible";
+        }
+
+        function redBorder(obj) {
+            obj.style.borderColor = "red";
+            obj.style.boxShadow = '0 0 5px red';
+        }
+
+        function greenBorder(obj) {
+            obj.style.borderColor = "green";
+            obj.style.boxShadow = '0 0 5px green';
+        }
+
+        function makeGreen(obj) {
+            obj.style.color = 'green';
+        }
+
+        function check() {
+
+            let author = document.form1.author;
+            let title = document.form1.title
+            let priority = document.form1.priority;
+            let content = document.form1.content;
+
+            let x = 0;
+
+            if (priority.selectedIndex === 0) {
+                unvalid(valiPriority);
+                redBorder(priority);
+                x = x + 1;
+            } else {
+                greenBorder(priority);
+            }
+
+            if (author.value === undefined || author.value === '') {
+                unvalid(valiAuthor);
+                redBorder(author);
+                x = x + 1;
+            } else {
+                greenBorder(author);
+            }
+
+
+            if (title.value === undefined || title.value === '') {
+                unvalid(valiTitle);
+                redBorder(title);
+                x = x + 1;
+            } else {
+                greenBorder(title);
+            }
+
+            if (content.value === undefined || content.value === '') {
+                unvalid(valiContent);
+                redBorder(content);
+                x = x + 1;
+            } else {
+                greenBorder(content);
+            }
+
+            greenBorder(date);
+
+            if (x > 0) {
+                return false;
+            } else {
+                if (confirm("게시물이 추가됩니다.")) {
+                    location.href = '${pageContext.request.contextPath}/index.jsp';
+                }
+                alert("게시물이 추가되었습니다.");
+            }
+        }
+
+    </script>
+    <title>Write page</title>
+</head>
+
+<body>
+
+<div id="writePage" class="container">
+    <h3>Add</h3>
+    <form id="userdata" name="form1" onsubmit="return check()">
+
+        <label for="title">제목</label><br>
+        <input type="text" id="title" name="title" placeholder="제목"><br>
+        <span class="vali" id="valiTitle">Title is required.</span><br>
+
+        <label for="content">내용</label><br>
+        <textarea name="content" id="content" placeholder="내용"></textarea><br>
+        <span class="vali" id="valiContent">Content is required.</span><br>
+
+        <label for="author">작성자</label><br/>
+        <input type="text" id="author" name="author" placeholder="작성자"><br>
+        <span class="vali" id="valiAuthor">Please write author's name.</span><br>
+
+        <label for="priority">중요도</label><br/>
+        <select name="priority" id="priority">
+            <option value="choose">Choose...</option>
+            <option value="1">1(중요하지 않음)</option>
+            <option value="2">2(알아두면 좋음)</option>
+            <option value="3">3(중요함)</option>
+            <option value="4">4(아주 중요함)</option>
+            <option value="5">5(대단히 중요함)</option>
+        </select><br><br>
+        <span class="vali" id="valiPriority">Please select the priority.</span><br>
+
+
+        <label for="date">작성일<span class="sublabel1"></span></label><br />
+        <input type="date" id="date" name="date">
+
+        <br><br>
+        <input type="submit" id="finalButton" value="추가">
+    </form>
+</div>
+
+</body>
+</html>

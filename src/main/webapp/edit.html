@@ -1,0 +1,135 @@
+<html>
+<head>
+    <title>Edit Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="my.css">
+
+    <script>
+        function saveConfirm(){
+
+            if(confirm("Do you want to save this file in your PC?")){
+                alert("This function is not developed yet...");}
+            return;
+        }
+
+        function unvalid(obj){
+            obj.style.visibility = "visible";
+        }
+        function redBorder(obj){
+            obj.style.borderColor = "red";
+            obj.style.boxShadow = '0 0 5px red';
+        }
+        function greenBorder(obj){
+            obj.style.borderColor = "green";
+            obj.style.boxShadow = '0 0 5px green';
+        }
+        function makeGreen(obj){
+            obj.style.color = 'green';
+        }
+        function check(){
+            let userN = document.form1.username;
+            let address = document.form1.address
+            let relationship = document.form1.relationship;
+            let phoneN =document.form1.phoneN;
+            let x = 0;
+            let email = document.form1.email;
+
+            if(relationship.selectedIndex ===4){
+                unvalid(valiR);
+                redBorder(relationship);
+                x = x+1;
+            }
+            else{
+                greenBorder(relationship);
+            }
+
+            if(userN.value === undefined || userN.value ===''){
+                unvalid(valiN);
+                redBorder(userN);
+                x = x+1;
+            }
+            else{
+                greenBorder(userN);
+            }
+
+
+            if(address.value === undefined || address.value ===''){
+                unvalid(valiA);
+                redBorder(address);
+                x = x+1;
+            }
+            else{
+                greenBorder(address);
+            }
+
+
+            if(phoneN.value === undefined || phoneN.value ===''){
+                unvalid(valiP);
+                redBorder(phoneN);
+                x = x+1;
+            }
+            else{
+                greenBorder(phoneN);
+            }
+
+
+            greenBorder(birthday);
+            greenBorder(email);
+
+
+            if(x > 0){
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                return false;
+            }
+            else{
+                if(confirm("게시물을 수정할까요?")){
+                    location.href='${pageContext.request.contextPath}/index.jsp';
+                }
+                alert("수정이 완료되었습니다!");
+            }
+            return;
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="editPage" class="container">
+    <h2>Edit</h2>
+    <form id="userdata" name="form1" onsubmit="return check()">
+
+        <label for="username">Name</label><br />
+        <input type="text" id="username" name="username" value="Aldrik"><br>
+        <span class="vali" id="valiN">Your username is required.</span><br>
+
+        <label for="relationship">Relationship</label><br />
+        <select name="relationship" id="relationship"><br>
+            <option value="Close friend">Close friend</option>
+            <option value="Best friend">Best friend</option>
+            <option value="Acquaintance">Acquaintance</option>
+            <option value="Coworker">Coworker</option>
+            <option value="choose">Choose...</option>
+        </select><br>
+        <span class="vali" id="valiR">Please select the relationship.</span><br>
+        <label for="phoneN">Phone Number</label><br>
+        <input type="text" id="phoneN" name="phoneN" value="010-1212-1212"><br>
+        <span class="vali" id="valiP">Phone number is required.</span><br>
+        <label for="email">Email <span class="sublabel1">(Optional)</span></label><br />
+        <input type="text" id="email" name="email" value="a@gmail.com"><br />
+        <br><label for="address">Address</label><br />
+        <textarea id="address" name="address">Deahak-Ro 333Beon-gil</textarea><br />
+        <span class="vali" id="valiA">Please enter the address.</span><br>
+        <label for="birthday">Birthday<span class="sublabel1">(Optional)</span></label><br />
+        <input type="date" id="birthday" name="birthday" value="2001-11-06"><br><br>
+        <label for="note">Additional Note</label><br>
+        <textarea name="note" id="note"></textarea>
+        <br><br>
+        <input type="submit" id="finalButton" value="수정">
+    </form>
+</div>
+
+</body>
+</html>
